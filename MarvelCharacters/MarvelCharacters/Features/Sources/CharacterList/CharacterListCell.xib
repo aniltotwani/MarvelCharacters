@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="CharacterListCell" id="gTV-IL-0wX" customClass="CharacterListCell" customModule="MarvelCharacters" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="240"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="240"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="csc-Mf-26L">
+                        <rect key="frame" x="8" y="8" width="398" height="190"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ivj-89-LDd">
+                        <rect key="frame" x="8" y="206" width="398" height="26"/>
+                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="26" id="EvT-91-Ccz"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="csc-Mf-26L" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="CS6-6Q-Znz"/>
+                <constraint firstAttribute="trailing" secondItem="ivj-89-LDd" secondAttribute="trailing" constant="8" id="HaI-PN-jmY"/>
+                <constraint firstItem="ivj-89-LDd" firstAttribute="top" secondItem="csc-Mf-26L" secondAttribute="bottom" constant="8" symbolic="YES" id="Pzz-Cg-30p"/>
+                <constraint firstAttribute="bottom" secondItem="ivj-89-LDd" secondAttribute="bottom" constant="8" id="S1M-oz-Kbd"/>
+                <constraint firstItem="ivj-89-LDd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="UDy-tv-uD6"/>
+                <constraint firstItem="csc-Mf-26L" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="bob-eO-510"/>
+                <constraint firstItem="ivj-89-LDd" firstAttribute="top" secondItem="csc-Mf-26L" secondAttribute="bottom" constant="8" symbolic="YES" id="eHP-2v-hbL"/>
+                <constraint firstAttribute="trailing" secondItem="csc-Mf-26L" secondAttribute="trailing" constant="8" id="hXT-Gj-Hkc"/>
+            </constraints>
+            <size key="customSize" width="312" height="240"/>
+            <connections>
+                <outlet property="CharactersImageView" destination="csc-Mf-26L" id="gYa-Js-PFb"/>
+                <outlet property="CharactersNameLabel" destination="ivj-89-LDd" id="yzY-hI-46w"/>
+            </connections>
+            <point key="canvasLocation" x="327.536231884058" y="156.69642857142856"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

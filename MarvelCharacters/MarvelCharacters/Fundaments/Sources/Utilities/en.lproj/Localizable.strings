@@ -1,0 +1,4 @@
+"error_character_list" = "Unable to fetch Character list";
+"character_list_title" = "CharacterList";
+"character_details_description_nodata" = "Description not available";
+"character_details_description_error" = "Not able to get Data";

@@ -1,0 +1,10 @@
+@testable import MarvelCharacters
+
+class CharacterDetailsViewMock: CharacterDetailsViewContract {
+    var viewState: CharacterDetailsViewState?
+    var presenter: CharacterDetailsPresenterContract!
+
+    func changeViewState(_ state: CharacterDetailsViewState) {
+        viewState = state
+    }
+}

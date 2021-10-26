@@ -1,0 +1,41 @@
+name: MarvelCharacters
+options:
+  bundleIdPrefix: com.Globant.MarvelCharacters.MarvelCharacters
+  createIntermediateGroups: true
+  deploymentTarget:
+    iOS: 14.0
+targets:
+  MarvelCharacters:
+    type: application
+    platform: iOS
+    sources:
+      - path: MarvelCharacters
+    dependencies:
+      - package: Kingfisher
+      - package: JSONDecoder-Keypath
+      - package: Alamofire
+      - package: Moya
+    scheme:
+      testTargets:
+      - MarvelCharactersTests
+  MarvelCharactersTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: MarvelCharactersTests
+    dependencies:
+      - target: MarvelCharacters
+packages:
+  Kingfisher:
+    url: https://github.com/onevcat/Kingfisher.git
+    majorVersion: 7.0.0
+  JSONDecoder-Keypath:
+    url: https://github.com/0111b/JSONDecoder-Keypath.git
+    majorVersion: 0.1.0
+  Alamofire:
+    url: https://github.com/Alamofire/Alamofire.git
+    majorVersion: 5.4.4
+  Moya:
+    url: https://github.com/Moya/Moya.git
+    majorVersion: 15.0.0
+
