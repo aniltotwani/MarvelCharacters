@@ -1,11 +1,10 @@
-import Alamofire
 import Foundation
-import JSONDecoder_Keypath
+import Moya
 
 extension CharacterServiceProvider {
-    func getCharacterList(for data: Data) -> Result<CharacterListModel, UseCaseError> {
+    func getCharacterList(for data: Response) -> Result<CharacterListModel, UseCaseError> {
         do {
-            let responseEntity = try JSONDecoder().decode(CharacterListEntity.self, from: data, keyPath: "data")
+            let responseEntity = try data.map(CharacterListEntity.self, atKeyPath: "data")
             let model = try responseEntity.mapToDomain()
             return .success(model)
         } catch {
@@ -13,9 +12,9 @@ extension CharacterServiceProvider {
         }
     }
 
-    func getCharacterDetails(for data: Data) -> Result<CharacterDetailsModel, UseCaseError> {
+    func getCharacterDetails(for data: Response) -> Result<CharacterDetailsModel, UseCaseError> {
         do {
-            let characterDetailsEntity = try JSONDecoder().decode([CharacterDetailsEntity].self, from: data, keyPath: "data.results")
+            let characterDetailsEntity = try data.map([CharacterDetailsEntity].self, atKeyPath: "data.results")
             guard let characterDetailsModel = try characterDetailsEntity.first?.mapToDomain() else {
                 return .failure(.inValidURL)
             }

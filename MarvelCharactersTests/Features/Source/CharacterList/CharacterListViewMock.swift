@@ -1,6 +1,6 @@
 @testable import MarvelCharacters
 
-class CharacterListViewMock: CharacterListViewContract {
+final class CharacterListViewMock: CharacterListViewContract {
     var viewState: CharacterListViewState?
     var presenter: CharacterListPresenterContract!
 

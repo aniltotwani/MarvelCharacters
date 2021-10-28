@@ -1,17 +1,17 @@
 import XCTest
 @testable import MarvelCharacters
 
-class CharacterDetailsBuilderTests: XCTestCase {
+final class CharacterDetailsBuilderTests: XCTestCase {
 
-    private let presenterMock = CharacterDetailsPresenterMock()
-    private let mockView = CharacterDetailsViewMock()
+    private let characterDetailsPresenter = CharacterDetailsPresenterMock()
+    private let characterDetailsViewMock = CharacterDetailsViewMock()
     private var builder: CharacterDetailsBuilder!
 
     func testBuild() {
-        builder = CharacterDetailsBuilder(view: mockView,
-                                          presenter: presenterMock)
-        let view = builder.build(id: 123)
-        XCTAssertNotNil(presenterMock.view)
+        builder = CharacterDetailsBuilder(view: characterDetailsViewMock,
+                                          presenter: characterDetailsPresenter)
+        let view = builder.build(id: 1111)
+        XCTAssertNotNil(characterDetailsPresenter.view)
         XCTAssertNotNil(view.presenter)
     }
 }

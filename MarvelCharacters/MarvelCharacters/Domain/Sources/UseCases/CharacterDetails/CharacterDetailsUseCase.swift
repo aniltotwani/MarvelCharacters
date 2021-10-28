@@ -1,5 +1,4 @@
 import Foundation
-import Alamofire
 
 struct CharacterDetailsParams {
     typealias Completion = (_ result: Result<CharacterDetailsModel, UseCaseError>) -> Void

@@ -1,7 +1,7 @@
 import Kingfisher
 import UIKit
 
-class CharacterListCell: UICollectionViewCell {
+final class CharacterListCell: UICollectionViewCell {
     @IBOutlet private weak var CharactersImageView: UIImageView!
     @IBOutlet private weak var CharactersNameLabel: UILabel!
 

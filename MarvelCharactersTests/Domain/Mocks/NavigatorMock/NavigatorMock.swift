@@ -1,7 +1,7 @@
 @testable import MarvelCharacters
 import UIKit
 
-class CoordinatorMock: MainNavigatorContract {
+final class NavigatorMock: MainNavigatorContract {
     var childNavigators: [Navigator] = []
     var navigationController: UINavigationController = UINavigationController()
     var runCalled = false

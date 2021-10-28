@@ -1,5 +1,5 @@
-import Alamofire
 import Foundation
+import Moya
 
 enum UseCaseError: Error {
     case inValidURL
@@ -7,15 +7,15 @@ enum UseCaseError: Error {
     case generic(Error?)
 }
 
-extension AFError {
+extension MoyaError {
     func error() -> UseCaseError {
         switch self {
-        case .invalidURL:
+        case .underlying(let error, _):
+            return .generic(error)
+        case .parameterEncoding(_):
             return .inValidURL
-        case .responseSerializationFailed, .responseValidationFailed:
-            return .noResponse
         default:
-            return .generic(self.underlyingError)
+            return .noResponse
         }
     }
 }

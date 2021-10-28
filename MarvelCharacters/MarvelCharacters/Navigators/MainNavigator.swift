@@ -5,7 +5,7 @@ protocol MainNavigatorContract: Navigator {
     func navigateToCharacterDetail(id: Int)
 }
 
-class MainNavigator: MainNavigatorContract {
+final class MainNavigator: MainNavigatorContract {
     var childNavigators = [Navigator]()
 
     var navigationController: UINavigationController

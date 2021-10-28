@@ -12,8 +12,6 @@ targets:
       - path: MarvelCharacters
     dependencies:
       - package: Kingfisher
-      - package: JSONDecoder-Keypath
-      - package: Alamofire
       - package: Moya
     scheme:
       testTargets:
@@ -29,12 +27,6 @@ packages:
   Kingfisher:
     url: https://github.com/onevcat/Kingfisher.git
     majorVersion: 7.0.0
-  JSONDecoder-Keypath:
-    url: https://github.com/0111b/JSONDecoder-Keypath.git
-    majorVersion: 0.1.0
-  Alamofire:
-    url: https://github.com/Alamofire/Alamofire.git
-    majorVersion: 5.4.4
   Moya:
     url: https://github.com/Moya/Moya.git
     majorVersion: 15.0.0

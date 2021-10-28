@@ -1,4 +1,3 @@
-import Alamofire
 @testable import MarvelCharacters
 
 final class CharacterServiceProviderMock: CharacterServiceProviderContract {

@@ -1,14 +1,14 @@
 import XCTest
 @testable import MarvelCharacters
 
-class CharacterListNavigationBuilderTests: XCTestCase {
+final class CharacterListNavigationBuilderTests: XCTestCase {
 
-    let coordinatorMock = CoordinatorMock()
+    let navigatorMock = NavigatorMock()
     private var builder: CharacterLisNavigationBuilder!
 
-    func testNavigateToMarvelDetails() {
-        builder = CharacterLisNavigationBuilder(navigator: coordinatorMock)
-        builder.navigateToCharacterDetails(id: 123)
-        XCTAssertTrue(coordinatorMock.navigateToDetailCalled)
+    func testNavigateToCharacterDetails() {
+        builder = CharacterLisNavigationBuilder(navigator: navigatorMock)
+        builder.navigateToCharacterDetails(id: 1111)
+        XCTAssertTrue(navigatorMock.navigateToDetailCalled)
     }
 }

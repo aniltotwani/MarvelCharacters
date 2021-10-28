@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 @testable import MarvelCharacters
 
-class CharacterListPresenterMock: CharacterListPresenterContract {
+final class CharacterListPresenterMock: CharacterListPresenterContract {
 
     func numberOfItemsIn(section: Int) -> Int {
         return 0

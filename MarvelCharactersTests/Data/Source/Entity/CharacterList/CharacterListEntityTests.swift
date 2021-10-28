@@ -2,7 +2,7 @@ import XCTest
 
 @testable import MarvelCharacters
 
-class CharacterListEntityTests: XCTestCase {
+final class CharacterListEntityTests: XCTestCase {
     func testCharacterListEntityToDomain() {
         let entity = CharacterListEntity(offset: 0,
                                          limit: 20,

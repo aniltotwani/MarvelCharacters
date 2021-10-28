@@ -12,7 +12,7 @@ protocol CharacterDetailsPresenterContract: PresenterContract {
     var characterID: Int? { get set}
 }
 
-class CharacterDetailsPresenter: CharacterDetailsPresenterContract {
+final class CharacterDetailsPresenter: CharacterDetailsPresenterContract {
     weak var view: CharacterDetailsViewContract?
     var characterID: Int?
     private var characterDetailsModel: CharacterDetailsModel?
@@ -49,7 +49,7 @@ private extension CharacterDetailsPresenter {
             switch result {
             case let .success(characterDetailsModel):
                 self.characterDetailsModel = characterDetailsModel
-                self.renderViewModel(characterDetailsModel)
+                self.renderViewModel()
             case .failure:
                 self.showError()
             }
@@ -57,7 +57,7 @@ private extension CharacterDetailsPresenter {
         characterDetailsUseCase?.run(params)
     }
 
-    func renderViewModel(_ characterDetailsModel: CharacterDetailsModel) {
+    func renderViewModel() {
         self.viewState = .render(mapModelToViewModel())
     }
 

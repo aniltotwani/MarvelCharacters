@@ -1,9 +1,8 @@
-import Alamofire
 import Foundation
 import XCTest
 @testable import MarvelCharacters
 
-class CharacterListPresenterTests: XCTestCase {
+final class CharacterListPresenterTests: XCTestCase {
     
     var presenter: CharacterListPresenter!
     var mockCharacterListView: CharacterListViewMock = CharacterListViewMock()

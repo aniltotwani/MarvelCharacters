@@ -1,7 +1,7 @@
 import XCTest
 @testable import MarvelCharacters
 
-class CharacterListBuilderTests: XCTestCase {
+final class CharacterListBuilderTests: XCTestCase {
 
     private let presenterMock = CharacterListPresenterMock()
     private let mockView = CharacterListViewMock()

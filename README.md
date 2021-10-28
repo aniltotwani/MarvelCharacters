@@ -5,8 +5,6 @@ This app will show all the marvel characters List & their respective details.
 We are using XcodeGen framework for the dependencies which can me modified using yml.
 List of Dependencies used in project using SPM
 * Kingfisher (7.0.0):  For caching and loading the images we have used this framework.
-* JSONDecoder-Keypath (0.1.0): To Decode the object at some custom key path that can be easily done by this framwork.
-* Alamofire (5.4.4):  For Network call
 * Moya (15.0.0):  For enhancing network requests
 
 ## Architecture:

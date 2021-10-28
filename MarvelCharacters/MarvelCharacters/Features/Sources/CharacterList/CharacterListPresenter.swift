@@ -1,5 +1,4 @@
 import Foundation
-import Alamofire
 
 enum CharacterListViewState: State {
     case clear

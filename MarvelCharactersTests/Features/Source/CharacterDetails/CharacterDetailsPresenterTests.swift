@@ -1,33 +1,32 @@
-import Alamofire
 import XCTest
 @testable import MarvelCharacters
 
-class CharacterDetailsPresenterTests: XCTestCase {
-    var presenter: CharacterDetailsPresenter!
-    var mockView = CharacterDetailsViewMock()
-    var useCaseMock = CharacterDetailsUseCaseMock()
+final class CharacterDetailsPresenterTests: XCTestCase {
+    var characterDetailsPresenter: CharacterDetailsPresenter!
+    var characterDetailsViewMock = CharacterDetailsViewMock()
+    var characterDetailsUseCaseMock = CharacterDetailsUseCaseMock()
 
     override func setUp() {
         super.setUp()
-        presenter = CharacterDetailsPresenter(characterDetailsUseCase: useCaseMock)
-        presenter.view = mockView
-        mockView.presenter = presenter
-        presenter.characterID = 1111
+        characterDetailsPresenter = CharacterDetailsPresenter(characterDetailsUseCase: characterDetailsUseCaseMock)
+        characterDetailsPresenter.view = characterDetailsViewMock
+        characterDetailsViewMock.presenter = characterDetailsPresenter
+        characterDetailsPresenter.characterID = 1111
     }
 
     func testFetchCharacterDetailsWithFailure() {
-        useCaseMock.result = .failure(.inValidURL)
-        presenter.viewLoaded()
-        XCTAssertEqual(mockView.viewState, .showError)
+        characterDetailsUseCaseMock.result = .failure(.inValidURL)
+        characterDetailsPresenter.viewLoaded()
+        XCTAssertEqual(characterDetailsViewMock.viewState, .showError)
     }
 
     func testFetchCharacterDetailsWithSuccess() {
-        useCaseMock.result = .success(CharacterDetailsModel.dummyInstance())
-        presenter.viewLoaded()
-        let expectedModel = CharacterDetailsViewModel(name: "character name",
-                                                      descriptionText: "character description",
-                                                      thumbnailURL: URL(string: "www.image.com"))
-        XCTAssertEqual(mockView.viewState, .render(expectedModel))
+        characterDetailsUseCaseMock.result = .success(CharacterDetailsModel.dummyInstance())
+        characterDetailsPresenter.viewLoaded()
+        let characterDetailsViewModel = CharacterDetailsViewModel(name: "character name",
+                                                                  descriptionText: "character description",
+                                                                  thumbnailURL: URL(string: "www.image.com"))
+        XCTAssertEqual(characterDetailsViewMock.viewState, .render(characterDetailsViewModel))
     }
 
 }

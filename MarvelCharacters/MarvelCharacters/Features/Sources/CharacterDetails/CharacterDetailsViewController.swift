@@ -42,7 +42,7 @@ extension CharacterDetailsViewController: CharacterDetailsViewContract {
 private extension CharacterDetailsViewController {
     func setupView(_ characterDetailsViewModel: CharacterDetailsViewModel) {
         nameLabelCharacter.text = characterDetailsViewModel.name
-        descriptionLabelCharacter.text = !characterDetailsViewModel.descriptionText.isEmpty ? characterDetailsViewModel.descriptionText: "character_details_description_nodata".localizedString()
+        descriptionLabelCharacter.text = characterDetailsViewModel.descriptionText
         renderImage(characterDetailsViewModel)
 
     }

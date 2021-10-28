@@ -1,13 +1,11 @@
-import Alamofire
 import XCTest
 @testable import MarvelCharacters
 
-class CharacterProviderTest: XCTestCase {
-    func testGetCharacterListAPISuccess() {
+final class CharacterProviderTest: XCTestCase {
+    private let provider = CharacterServiceProviderMock()
+    func testGetCharacterListWithSuccess() {
         let success = expectation(description: "success")
-        let mockData = getMock(name: "CharacterList")
-        let netMock = NetworkServiceMock(responseHandler: .success(mockData))
-        let provider = CharacterServiceProvider(serviceRequest: netMock)
+        provider.getCharacterList = .success(CharacterListModel.dummyInstance())
         provider.getCharacterList(requestModel: CharacterListRequestModel.dummyInstance()) { result in
             if case .success = result {
                 success.fulfill()
@@ -16,10 +14,9 @@ class CharacterProviderTest: XCTestCase {
         waitForExpectations(timeout: 1, handler: nil)
     }
 
-    func testGetCharacterListAPIFailure() {
+    func testGetCharacterListWithFailure() {
         let error = expectation(description: "Error")
-        let mock = NetworkServiceMock(responseHandler: .failure(.inValidURL))
-        let provider = CharacterServiceProvider(serviceRequest: mock)
+        provider.getCharacterList = .failure(.inValidURL)
         provider.getCharacterList(requestModel: CharacterListRequestModel.dummyInstance()) { result in
             if case .failure = result {
                 error.fulfill()
@@ -28,12 +25,10 @@ class CharacterProviderTest: XCTestCase {
         waitForExpectations(timeout: 1, handler: nil)
     }
 
-    func testGetCharacterDetailsAPISuccess() {
+    func testGetCharacterDetailsWithSuccess() {
         let success = expectation(description: "success")
-        let mockData = getMock(name: "CharacterList")
-        let mock = NetworkServiceMock(responseHandler: .success(mockData))
-        let provider = CharacterServiceProvider(serviceRequest: mock)
-        provider.getCharacterDetails(characterID: 123) { result in
+        provider.getCharacterDetails = .success(CharacterDetailsModel.dummyInstance())
+        provider.getCharacterDetails(characterID: 1111) { result in
             if case .success = result {
                 success.fulfill()
             }
@@ -41,24 +36,14 @@ class CharacterProviderTest: XCTestCase {
         waitForExpectations(timeout: 1, handler: nil)
     }
 
-    func testGetCharacterDetailsAPIFailure() {
+    func testGetCharacterDetailsWithFailure() {
         let error = expectation(description: "Error")
-        let mock = NetworkServiceMock(responseHandler: .failure(.inValidURL))
-        let provider = CharacterServiceProvider(serviceRequest: mock)
-        provider.getCharacterDetails(characterID: 123) { result in
+        provider.getCharacterDetails = .failure(.inValidURL)
+        provider.getCharacterDetails(characterID: 1111) { result in
             if case .failure = result {
                 error.fulfill()
             }
         }
         waitForExpectations(timeout: 1, handler: nil)
-    }
-
-    func getMock(name: String) -> Data {
-        let bundle = Bundle(for: type(of: self))
-        guard let filePath = bundle.path(forResource: name, ofType: "json"),
-              let data = try? String(contentsOfFile: filePath).data(using: .utf8) else {
-            return Data()
-        }
-        return data
     }
 }

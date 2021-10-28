@@ -1,9 +1,8 @@
-import Alamofire
 import XCTest
 
 @testable import MarvelCharacters
 
-class CharacterListUseCaseTests: XCTestCase {
+final class CharacterListUseCaseTests: XCTestCase {
     private var characterListUseCase: CharacterListUseCaseContract!
     var characterServiceProviderMock = CharacterServiceProviderMock()
 
@@ -12,8 +11,8 @@ class CharacterListUseCaseTests: XCTestCase {
         characterListUseCase = CharacterListUseCase(provider: characterServiceProviderMock)
     }
 
-    func testGetCharacterListUseCaseSuccess() {
-        let expectation = XCTestExpectation(description: "Success")
+    func testGetCharacterListUseCaseWithSuccess() {
+        let expectation = expectation(description: "Success")
         characterServiceProviderMock.getCharacterList = .success(CharacterListModel.dummyInstance())
         let params = CharacterListParams(requestModel: CharacterListRequestModel.dummyInstance()) { result in
             if case .success = result {
@@ -21,6 +20,18 @@ class CharacterListUseCaseTests: XCTestCase {
             }
         }
         characterListUseCase.run(params)
-        wait(for: [expectation], timeout: 2)
+        wait(for: [expectation], timeout: 1)
+    }
+
+    func testGetCharacterListUseCaseWithFailure() {
+        let expectation = expectation(description: "Error")
+        characterServiceProviderMock.getCharacterList = .failure(.inValidURL)
+        let params = CharacterListParams(requestModel: CharacterListRequestModel.dummyInstance()) { result in
+            if case .failure = result {
+                expectation.fulfill()
+            }
+        }
+        characterListUseCase.run(params)
+        wait(for: [expectation], timeout: 1)
     }
 }

@@ -2,6 +2,6 @@
 
 extension CharacterListRequestModel {
     static func dummyInstance() -> CharacterListRequestModel {
-        CharacterListRequestModel(offset: 1, limit: 20)
+        CharacterListRequestModel(offset: 0, limit: 20)
     }
 }

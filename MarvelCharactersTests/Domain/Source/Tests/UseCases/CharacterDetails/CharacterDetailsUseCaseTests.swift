@@ -1,8 +1,7 @@
-import Alamofire
 import XCTest
 @testable import MarvelCharacters
 
-class CharacterDetailsUseCaseTests: XCTestCase {
+final class CharacterDetailsUseCaseTests: XCTestCase {
     private var characterDetailsUseCase: CharacterDetailsUseCaseContract!
     var characterServiceProviderMock = CharacterServiceProviderMock()
 
@@ -11,15 +10,27 @@ class CharacterDetailsUseCaseTests: XCTestCase {
         characterDetailsUseCase = CharacterDetailsUseCase(provider: characterServiceProviderMock)
     }
 
-    func testGetCharacterDetailsUseCaseFailure() {
-        let expectation = XCTestExpectation(description: "Error")
-        characterServiceProviderMock.getCharacterDetails = .failure(.inValidURL)
-        let params = CharacterDetailsParams(characterID: 123) { result in
+    func testGetCharacterDetailsUseCaseWithSuccess() {
+        let expectation = expectation(description: "Success")
+        characterServiceProviderMock.getCharacterDetails = .success(CharacterDetailsModel.dummyInstance())
+        let params = CharacterDetailsParams(characterID: 1111) { result in
+            if case .success = result {
+                expectation.fulfill()
+            }
+        }
+        characterDetailsUseCase.run(params)
+        wait(for: [expectation], timeout: 1)
+    }
+
+    func testGetCharacterDetailsUseCaseWithFailure() {
+        let expectation = expectation(description: "Error")
+        characterServiceProviderMock.getCharacterDetails = .failure(UseCaseError.inValidURL)
+        let params = CharacterDetailsParams(characterID: 1111) { result in
             if case .failure = result {
                 expectation.fulfill()
             }
         }
         characterDetailsUseCase.run(params)
-        wait(for: [expectation], timeout: 2)
+        wait(for: [expectation], timeout: 1)
     }
 }

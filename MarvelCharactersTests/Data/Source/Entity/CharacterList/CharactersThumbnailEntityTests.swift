@@ -2,7 +2,7 @@ import XCTest
 
 @testable import MarvelCharacters
 
-class CharactersThumbnailEntityTests: XCTestCase {
+final class CharactersThumbnailEntityTests: XCTestCase {
 
     func testCharactersThumbnailEntityToDomain() {
         let entity = CharactersThumbnailEntity(path: "image", imageExtension: "jpg")

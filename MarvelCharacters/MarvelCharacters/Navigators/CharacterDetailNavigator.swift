@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-class CharacterDetailNavigator: Navigator {
+final class CharacterDetailNavigator: Navigator {
     var childNavigators = [Navigator]()
 
     var navigationController: UINavigationController

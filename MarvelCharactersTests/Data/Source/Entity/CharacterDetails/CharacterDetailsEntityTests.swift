@@ -2,7 +2,7 @@ import XCTest
 
 @testable import MarvelCharacters
 
-class CharacterDetailsEntityTests: XCTestCase {
+final class CharacterDetailsEntityTests: XCTestCase {
     func testCharacterDetailsEntityToDomain() {
         let entity = CharacterDetailsEntity(id: 1111,
                                             name: "character",
