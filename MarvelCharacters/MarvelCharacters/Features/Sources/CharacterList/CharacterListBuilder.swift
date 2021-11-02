@@ -3,12 +3,12 @@ import Foundation
 final class CharacterListBuilder {
     let view: CharacterListViewContract
     let presenter: CharacterListPresenterContract
-    var navigationBuilder: CharacterLisNavigationBuilderContract
+    var navigationBuilder: CharacterListNavigationBuilderContract
     weak var navigator: MainNavigator?
 
     init(view: CharacterListViewContract = CharacterListViewController.constructViewController(),
          presenter: CharacterListPresenterContract = CharacterListPresenter(),
-         navigationBuilder: CharacterLisNavigationBuilderContract = CharacterLisNavigationBuilder()) {
+         navigationBuilder: CharacterListNavigationBuilderContract = CharacterListNavigationBuilder()) {
         self.view = view
         self.presenter = presenter
         self.navigationBuilder = navigationBuilder
@@ -16,7 +16,7 @@ final class CharacterListBuilder {
 
     func build() -> CharacterListViewContract {
         let dependencies = CharacterListDependencies(view: view,
-                                                     navigationBuilder: CharacterLisNavigationBuilder(navigator: navigator))
+                                                     navigationBuilder: CharacterListNavigationBuilder(navigator: navigator))
         presenter.setupDependencies(dependencies)
         view.presenter = presenter
         return view

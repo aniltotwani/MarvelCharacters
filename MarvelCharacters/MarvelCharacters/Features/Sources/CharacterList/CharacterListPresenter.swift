@@ -9,7 +9,7 @@ enum CharacterListViewState: State {
 
 struct CharacterListDependencies {
     var view: CharacterListViewContract?
-    var navigationBuilder: CharacterLisNavigationBuilderContract?
+    var navigationBuilder: CharacterListNavigationBuilderContract?
 }
 
 protocol CharacterListPresenterContract: PresenterContract, ViewModelTableDataSource {
@@ -22,7 +22,7 @@ protocol CharacterListPresenterContract: PresenterContract, ViewModelTableDataSo
 
 final class CharacterListPresenter: CharacterListPresenterContract {
     weak var view: CharacterListViewContract?
-    var navigationBuilder: CharacterLisNavigationBuilderContract?
+    var navigationBuilder: CharacterListNavigationBuilderContract?
     private var characterListUseCase : CharacterListUseCaseContract?
     private var characterModels: [CharactersModel] = []
     private var characterListModel: CharacterListModel?

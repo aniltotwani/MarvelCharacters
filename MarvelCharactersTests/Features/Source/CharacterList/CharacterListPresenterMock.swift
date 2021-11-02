@@ -10,7 +10,7 @@ final class CharacterListPresenterMock: CharacterListPresenterContract {
 
     func didSelectItemAt(indexPath: IndexPath) {}
 
-    var navigationBuilder: CharacterLisNavigationBuilderContract?
+    var navigationBuilder: CharacterListNavigationBuilderContract?
 
     var view: CharacterListViewContract?
 

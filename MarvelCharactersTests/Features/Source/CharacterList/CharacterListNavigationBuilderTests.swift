@@ -4,10 +4,10 @@ import XCTest
 final class CharacterListNavigationBuilderTests: XCTestCase {
 
     let navigatorMock = NavigatorMock()
-    private var builder: CharacterLisNavigationBuilder!
+    private var builder: CharacterListNavigationBuilder!
 
     func testNavigateToCharacterDetails() {
-        builder = CharacterLisNavigationBuilder(navigator: navigatorMock)
+        builder = CharacterListNavigationBuilder(navigator: navigatorMock)
         builder.navigateToCharacterDetails(id: 1111)
         XCTAssertTrue(navigatorMock.navigateToDetailCalled)
     }

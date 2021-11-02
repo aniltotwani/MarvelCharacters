@@ -2,7 +2,7 @@ import Foundation
 
 @testable import MarvelCharacters
 
-final class CharacterListNavigationBuilderMock: CharacterLisNavigationBuilderContract {
+final class CharacterListNavigationBuilderMock: CharacterListNavigationBuilderContract {
     var navigateToMarvelDetailsCalled = false
 
     func navigateToCharacterDetails(id: Int) {

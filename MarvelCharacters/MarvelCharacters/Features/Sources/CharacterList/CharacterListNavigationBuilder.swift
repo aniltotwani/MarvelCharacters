@@ -1,10 +1,10 @@
 import Foundation
 
-protocol CharacterLisNavigationBuilderContract {
+protocol CharacterListNavigationBuilderContract {
     func navigateToCharacterDetails(id: Int)
 }
 
-final class CharacterLisNavigationBuilder: CharacterLisNavigationBuilderContract {
+final class CharacterListNavigationBuilder: CharacterListNavigationBuilderContract {
     var navigator: MainNavigatorContract?
 
     init(navigator: MainNavigatorContract? = MainNavigator()) {
